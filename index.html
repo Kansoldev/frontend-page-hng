@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Front End (HNG)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="card-container">
+      <img
+        src="profile.jpg"
+        class="round"
+        alt="Kansoldev"
+        data-testid="slackDisplayImage"
+      />
+      <h3 data-testid="slackUserName">Kansoldev</h3>
+      <h6 data-testid="currentDayOfTheWeek"></h6>
+      <p data-testid="currentUTCTime"></p>
+      <p data-testid="myTrack">Frontend</p>
+      <a href="#" target="_blank" class="primary" data-testid="githubURL"
+        >Github URL</a
+      >
+    </div>
+
+    <script>
+      // This array helps to get the actual day name, as getDay() only returns the day number
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      const currentDate = new Date();
+      const UTCString = currentDate.toISOString(); // Convert date to get the UTC representation
+      const UTCTime = new Date(UTCString).getTime(); // Convert UTCString to get the time in milliseconds
+
+      document.querySelector(
+        "h6[data-testid='currentDayOfTheWeek']"
+      ).textContent = days[currentDate.getDay()];
+
+      document.querySelector("p[data-testid='currentUTCTime']").textContent =
+        UTCTime;
+    </script>
+  </body>
+</html>
